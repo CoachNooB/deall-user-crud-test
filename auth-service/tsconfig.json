@@ -1,0 +1,21 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+      "@typescript-eslint"
+  ],
+  "compilerOptions": {
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "module": "commonjs",
+      "target": "es2017",
+      "noImplicitAny": false,
+      "outDir": "./dist",
+      "sourceMap": true,
+      "resolveJsonModule": true,
+      "skipLibCheck": true,
+      "allowJs": true,
+      "esModuleInterop": false
+  },
+  "include": ["src/**/*"]
+}
