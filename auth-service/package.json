@@ -1,7 +1,7 @@
 {
   "name": "auth-service",
   "version": "1.0.0",
-  "description": "Authentication Servce",
+  "description": "Authentication Service",
   "main": "./dist/server/server.js",
   "repository": "https://github.com/CoachNooB/deall-user-crud-test.git",
   "author": {

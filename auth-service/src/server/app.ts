@@ -1,7 +1,7 @@
 import * as express from "express";
 import { Config, dbConnect } from "../lib";
 import { errorCatcher } from "../middleware";
-import { loginRouter } from "./routes/login";
+import { loginRouter } from "./routes";
 
 
 export const initApp = async (): Promise<{ app: express.Application, config: Config }> => {
