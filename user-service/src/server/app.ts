@@ -1,3 +1,4 @@
+import "dotenv/config";
 import * as express from "express";
 import { Config, dbConnect } from "../lib";
 import { errorCatcher } from "../middleware";

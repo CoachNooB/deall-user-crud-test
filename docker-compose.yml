@@ -1,0 +1,19 @@
+version: '2'
+services:
+  auth-service:
+    build: ./auth-service
+    ports:
+      - 3100:3100
+    environment:
+      - NODE_PORT=3100
+      - MONGO_URI=mongodb+srv://admin:gjLsLgBz2yKldXgY@test-cluster.hx4mkk3.mongodb.net/?retryWrites=true&w=majority
+      - JWT_SECRET=80652e45-73a8-4ab0-a1ac-deb95e60309b
+
+  user-service:
+    build: ./user-service
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_PORT=3000
+      - MONGO_URI=mongodb+srv://admin:gjLsLgBz2yKldXgY@test-cluster.hx4mkk3.mongodb.net/?retryWrites=true&w=majority
+      - JWT_SECRET=80652e45-73a8-4ab0-a1ac-deb95e60309b

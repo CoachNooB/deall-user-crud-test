@@ -20,11 +20,23 @@ export const adminRouteSecurity = async (req: Request, res: Response, next: Next
         });
         return;
     }
-    const decoded: any = jwt.verify(token, config.jwtSecret);
-    if(decoded.role !== "Admin") {
-        res.status(401);
+    try {
+        const decoded: any = jwt.verify(token, config.jwtSecret);
+        if(decoded.role !== "Admin") {
+            if(decoded.id !== req.params.id) {
+                res.status(401);
+                res.json({
+                    message: "You are not authorized to access this API."
+                });
+                return;
+            }
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500);
         res.json({
-            message: "You are not authorized to access this API."
+            message: `Cannot Verify Token.`,
+            error
         });
         return;
     }
@@ -43,15 +55,26 @@ export const userRouteSecurity = async (req: Request, res: Response, next: NextF
         });
         return;
     }
-    const decoded: any = jwt.verify(token, config.jwtSecret);
-    if(decoded.role !== "Admin") {
-        if(decoded.id !== req.params.id) {
-            res.status(401);
-            res.json({
-                message: "You are not authorized to access this API."
-            });
-            return;
+    try {
+        const decoded: any = jwt.verify(token, config.jwtSecret);
+        if(decoded.role !== "Admin") {
+            if(decoded.id !== req.params.id) {
+                res.status(401);
+                res.json({
+                    message: "You are not authorized to access this API."
+                });
+                return;
+            }
         }
+    } catch (error) {
+        console.log(error);
+        res.status(500);
+        res.json({
+            message: `Cannot Verify Token.`,
+            error
+        });
+        return;
     }
+    
     next();
 }
